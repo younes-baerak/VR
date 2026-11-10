@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>LAB 6</title>
 
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-
 </head>
 
 <body>
@@ -13,62 +11,71 @@
 <a-scene>
 
     <a-assets>
-        <img id="sky" src="images/sunrise.jpg" crossorigin="anonymous">
-        <img id="grid" src="images/25P1geh.png" crossorigin="anonymous">
+        <img id="earth"
+        src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00452/PIA00452.jpg"
+        crossorigin="anonymous">
     </a-assets>
 
+    <!-- Space Background -->
+    <a-sky color="#050816"></a-sky>
+
+    <!-- Earth -->
+    <a-entity
+        geometry="primitive: sphere; radius: 3"
+        position="0 2 -12"
+        material="src: #earth; roughness: 1"
+        animation="property: rotation;
+                   to: 0 360 0;
+                   dur: 20000;
+                   easing: linear;
+                   loop: true">
+    </a-entity>
 
     <!-- Box -->
     <a-entity
         geometry="primitive: box"
-        scale="4 4 4"
-        position="0 4 -10"
-        material="color: #c5b2a0;
-                  metalness: 1;
-                  roughness: 0.3;
-                  sphericalEnvMap: #sky"
+        position="-4 1 -6"
+        material="color: #4CC3D9"
         animation="property: rotation;
+                   to: 360 360 0;
+                   dur: 5000;
                    easing: linear;
-                   dur: 10000;
-                   to: 0 0 360;
                    loop: true">
     </a-entity>
 
-
-    <!-- Plane -->
+    <!-- Cylinder -->
     <a-entity
-        geometry="primitive: plane;
-                  width: 10000;
-                  height: 10000"
-        position="0 -10 0"
-        rotation="-90 0 0"
-        material="src: #grid;
-                  repeat: 10000 10000;
-                  transparent: true;
-                  metalness: 0.6;
-                  roughness: 0.4;
-                  sphericalEnvMap: #sky">
+        geometry="primitive: cylinder"
+        position="4 1 -6"
+        material="color: #FFC65D"
+        animation="property: scale;
+                   from: 1 1 1;
+                   to: 1 2 1;
+                   dir: alternate;
+                   dur: 2000;
+                   loop: true">
     </a-entity>
 
+    <!-- Ground -->
+    <a-entity
+        geometry="primitive: plane; width: 100; height: 100"
+        position="0 -2 0"
+        rotation="-90 0 0"
+        material="color: #111827">
+    </a-entity>
 
     <!-- Light -->
     <a-entity
-        light="type: point;
-               color: white;
-               intensity: 0.5"
-        position="-5 5 15">
+        light="type: ambient; intensity: 1">
     </a-entity>
 
-
-    <!-- Sky -->
+    <!-- Camera -->
     <a-entity
-        geometry="primitive: sphere; radius: 500"
-        material="shader: flat;
-                  src: #sky;
-                  side: back"
-        rotation="0 -90 0">
+        camera
+        position="0 2 3"
+        look-controls
+        wasd-controls>
     </a-entity>
-
 
 </a-scene>
 
