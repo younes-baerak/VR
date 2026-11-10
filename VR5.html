@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>LAB 6 - Exercise 2.2</title>
+    <title>LAB 6</title>
 
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
@@ -12,97 +12,58 @@
 
 <a-scene>
 
-    <!-- Sky -->
-    <a-sky color="#ECECE0"></a-sky>
+    <a-assets>
+        <!-- External Space Background -->
+        <img id="sky"
+        src="https://images.unsplash.com/photo-1767188789408-01a4d8c6f0ad?auto=format&fit=crop&fm=jpg&q=80&w=3000"
+        crossorigin="anonymous">
+    </a-assets>
 
 
-    <!-- Ground -->
-    <a-entity
-        geometry="primitive: plane; width: 20; height: 20"
-        position="0 0 0"
-        rotation="-90 0 0"
-        material="color: #7BC8A4">
-    </a-entity>
+    <!-- Space Background -->
+    <a-sky
+        src="#sky"
+        rotation="0 -90 0">
+    </a-sky>
 
 
-    <!-- Box Entity -->
+    <!-- Box -->
     <a-entity
         geometry="primitive: box"
-        position="-2 1 -5"
-        scale="1.5 1.5 1.5"
-        material="color: #4CC3D9; metalness: 0.7; roughness: 0.3"
-        animation__rotation="
-            property: rotation;
-            to: 0 360 0;
-            dur: 4000;
-            easing: linear;
-            loop: true"
-        animation__scale="
-            property: scale;
-            from: 1.5 1.5 1.5;
-            to: 2 2 2;
-            dir: alternate;
-            dur: 2000;
-            loop: true">
+        scale="4 4 4"
+        position="0 4 -10"
+        material="color: #c5b2a0;
+                  metalness: 1;
+                  roughness: 0.3;
+                  sphericalEnvMap: #sky"
+        animation="property: rotation;
+                   easing: linear;
+                   dur: 10000;
+                   to: 0 0 360;
+                   loop: true">
     </a-entity>
 
 
-    <!-- Sphere Entity -->
+    <!-- Plane -->
     <a-entity
-        geometry="primitive: sphere; radius: 0.8"
-        position="0 1 -5"
-        material="color: #EF2D5E; metalness: 0.5"
-        animation__position="
-            property: position;
-            from: 0 1 -5;
-            to: 0 3 -5;
-            dir: alternate;
-            dur: 2000;
-            loop: true"
-        animation__color="
-            property: material.color;
-            from: #EF2D5E;
-            to: #FFC65D;
-            dir: alternate;
-            dur: 2000;
-            loop: true">
-    </a-entity>
-
-
-    <!-- Cylinder Entity -->
-    <a-entity
-        geometry="primitive: cylinder; radius: 0.5; height: 1.5"
-        position="2 0.75 -5"
-        material="color: #FFC65D"
-        animation__scale="
-            property: scale;
-            from: 1 1 1;
-            to: 1 2 1;
-            dir: alternate;
-            dur: 2000;
-            loop: true"
-        animation__rotation="
-            property: rotation;
-            to: 0 360 0;
-            dur: 5000;
-            easing: linear;
-            loop: true">
+        geometry="primitive: plane;
+                  width: 10000;
+                  height: 10000"
+        position="0 -10 0"
+        rotation="-90 0 0"
+        material="color: #151B30;
+                  transparent: true;
+                  metalness: 0.6;
+                  roughness: 0.4">
     </a-entity>
 
 
     <!-- Light -->
     <a-entity
-        light="type: directional; color: white; intensity: 1"
-        position="-3 5 5">
-    </a-entity>
-
-
-    <!-- Camera -->
-    <a-entity
-        camera
-        position="0 2 5"
-        look-controls
-        wasd-controls>
+        light="type: point;
+               color: white;
+               intensity: 0.5"
+        position="-5 5 15">
     </a-entity>
 
 
