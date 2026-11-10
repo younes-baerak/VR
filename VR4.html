@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LAB 6</title>
+
+    <script src="releases/1.2.0/aframe.min.js"></script>
+
+</head>
+
+<body>
+
+<a-scene>
+
+    <a-assets>
+        <img id="sky" src="images/sunrise.jpg" crossorigin="anonymous">
+        <img id="grid" src="images/25P1geh.png" crossorigin="anonymous">
+    </a-assets>
+
+
+    <!-- Box Entity -->
+    <a-entity
+        geometry="primitive: box"
+        scale="4 4 4"
+        position="0 4 -10"
+        material="color: #c5b2a0;
+                  metalness: 1;
+                  roughness: 0.3;
+                  sphericalEnvMap: #sky"
+        animation="property: rotation;
+                   from: 0 0 0;
+                   to: 0 0 360;
+                   dur: 10000;
+                   easing: linear;
+                   loop: true">
+    </a-entity>
+
+
+    <!-- Plane Entity -->
+    <a-entity
+        geometry="primitive: plane;
+                  width: 10000;
+                  height: 10000"
+        position="0 -10 0"
+        rotation="-90 0 0"
+        material="src: #grid;
+                  repeat: 10000 10000;
+                  transparent: true;
+                  metalness: 0.6;
+                  roughness: 0.4;
+                  sphericalEnvMap: #sky">
+    </a-entity>
+
+
+    <!-- Light Entity -->
+    <a-entity
+        light="type: point;
+               color: white;
+               intensity: 0.5"
+        position="-5 5 15">
+    </a-entity>
+
+
+    <!-- Sky Entity -->
+    <a-entity
+        geometry="primitive: sphere;
+                  radius: 500"
+        material="shader: flat;
+                  src: #sky;
+                  side: back"
+        rotation="0 -90 0">
+    </a-entity>
+
+
+</a-scene>
+
+</body>
+</html>
