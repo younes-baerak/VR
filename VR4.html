@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>LAB 6</title>
 
-    <script src="releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
 </head>
 
@@ -17,7 +18,7 @@
     </a-assets>
 
 
-    <!-- Box Entity -->
+    <!-- Box -->
     <a-entity
         geometry="primitive: box"
         scale="4 4 4"
@@ -27,15 +28,14 @@
                   roughness: 0.3;
                   sphericalEnvMap: #sky"
         animation="property: rotation;
-                   from: 0 0 0;
-                   to: 0 0 360;
-                   dur: 10000;
                    easing: linear;
+                   dur: 10000;
+                   to: 0 0 360;
                    loop: true">
     </a-entity>
 
 
-    <!-- Plane Entity -->
+    <!-- Plane -->
     <a-entity
         geometry="primitive: plane;
                   width: 10000;
@@ -51,7 +51,7 @@
     </a-entity>
 
 
-    <!-- Light Entity -->
+    <!-- Light -->
     <a-entity
         light="type: point;
                color: white;
@@ -60,10 +60,9 @@
     </a-entity>
 
 
-    <!-- Sky Entity -->
+    <!-- Sky -->
     <a-entity
-        geometry="primitive: sphere;
-                  radius: 500"
+        geometry="primitive: sphere; radius: 500"
         material="shader: flat;
                   src: #sky;
                   side: back"
